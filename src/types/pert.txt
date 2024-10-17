@@ -1,0 +1,2 @@
+task:
+ressource:string, id:string, name:string, duration:number, predecessors:list[task]
