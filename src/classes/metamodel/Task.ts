@@ -3,8 +3,8 @@ import { Node } from "../meta-metamodel/Node";
 class Task extends Node {
     name: string;
     duration: number;
-    startTime: number;
-    endTime: number;
+    earliestStart: number;
+    latestEnd: number;
     resource: string;
     predecessors: Task[];
     successors: Task[];
@@ -13,8 +13,8 @@ class Task extends Node {
         super(id);
         this.name = name;
         this.duration = duration;
-        this.startTime = 0;
-        this.endTime = 0;
+        this.earliestStart = 0;
+        this.latestEnd = 0;
         this.resource = resource;
         this.predecessors = [];
         this.successors = [];
