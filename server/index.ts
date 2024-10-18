@@ -1,6 +1,7 @@
 import fs from "fs";
 import express from "express";
 // import cors from "cors";
+import { toFile } from '@ts-graphviz/adapter';
 import { Task } from "./classes/metamodel/Task";
 import { Pert } from "./classes/metamodel/Pert";
 
@@ -132,19 +133,25 @@ const tasks = [
   },
 ];
 
-function createPert(tasks: any): Pert {
+function createPert(data: any): Pert {
   const pertTasks: Task[] = [];
 
-  tasks.forEach((task: any) => {
+  data.forEach((task: any) => {
     const pertTask = new Task(task.id, task.name, task.duration, task.resource);
     pertTasks.push(pertTask);
   });
 
-  tasks.forEach((task: any) => {
+  data.forEach((task: any) => {
     const pertTask = pertTasks.find((t) => t.id === task.id);
     task.predecessors.forEach((predecessorId: any) => {
       const predecessor = pertTasks.find((t) => t.id === predecessorId);
       pertTask!.addPredecessor(predecessor!);
+    });
+  });
+
+  pertTasks.forEach((task: Task) => {
+    task.predecessors.forEach((predecessor: Task) => {
+      predecessor.addSuccessor(task);
     });
   });
 
@@ -158,12 +165,27 @@ app.get("/api/v1", (req, res) => {
   res.send("Hello, World!");
 });
 
-app.post("/api/v1/pert.dot", (req, res) => {
-  const tasks = req.body.tasks;
+// generate SVG from DOT
+app.get("/api/v1/pert.svg", async (req, res) => {
+
+  // Create PERT model
   const pert = createPert(tasks);
+
+  // Calculate earliest and latest times
+  pert.calculateEarliestTimes();
+  pert.calculateLatestTimes();
+
+  // Generate DOT string
   const dot = pert.generateDot();
-  fs.writeFileSync("pert.dot", dot);
-  res.send(dot);
+
+  // Write DOT to file
+  fs.writeFileSync("./pert.dot", dot);
+
+  // Generate SVG from DOT
+  await toFile(dot, "./pert.svg", { format: "svg" });
+
+  // Send SVG
+  res.sendFile("./pert.svg", { root: __dirname });
 });
 
 app.listen(port, host, () => {

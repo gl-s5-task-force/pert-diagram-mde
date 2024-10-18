@@ -13,8 +13,8 @@
         "cors": "^2.8.5",
         "express": "^4.21.1",
         "fs-extra": "^11.2.0",
-        "graphviz": "^0.0.9",
         "pert-diagram-server": "file:",
+        "ts-graphviz": "^2.1.4",
         "typescript": "^5.6.3"
     },
     "devDependencies": {

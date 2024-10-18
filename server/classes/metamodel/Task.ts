@@ -4,6 +4,8 @@ class Task extends Node {
     name: string;
     duration: number;
     earliestStart: number;
+    earliestEnd: number;
+    latestStart: number;
     latestEnd: number;
     resource: string;
     predecessors: Task[];
@@ -14,6 +16,8 @@ class Task extends Node {
         this.name = name;
         this.duration = duration;
         this.earliestStart = 0;
+        this.earliestEnd = 0;
+        this.latestStart = 0;
         this.latestEnd = 0;
         this.resource = resource;
         this.predecessors = [];
