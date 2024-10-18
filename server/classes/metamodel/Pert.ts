@@ -3,24 +3,30 @@ import { Graph } from "../meta-metamodel/Graph";
 import { Task } from "./Task";
 
 class Pert extends Graph {
-    tasks: Task[];
+  tasks: Task[];
 
-    constructor() {
-        super();
-        this.tasks = [];
-    }
+  constructor(
+    tasks: Task[],
+  ) {
+    super();
+    this.tasks = tasks;
+  }
 
-    addTask(task: Task) {
-        this.tasks.push(task);
-        super.addNode(task);
-    }
+  // Generate DOT string
+  generateDot(): string {
+    let dot = "digraph PertDiagram {\n";
+    this.tasks.forEach((task: Task) => {
+      dot += `"${task.id}" [label="${task.name}\\nDuration: ${task.duration}\\nEarliest Start: ${task.earliestStart}\\nLatest End: ${task.latestEnd}"];\n`;
 
-    addDependency(predecessor: Task, successor: Task) {
-        predecessor.addSuccessor(successor);
-        successor.addPredecessor(predecessor);
-        const edge = new Edge(predecessor, successor);
-        super.addEdge(edge);
-    }
+      if (task.successors) {
+        task.successors.forEach((successor: Task) => {
+          dot += `"${task.id}" -> "${successor}";\n`;
+        });
+      }
+    });
+    dot += "}\n";
+    return dot;
+  }
 }
 
 export { Pert };
