@@ -179,13 +179,13 @@ app.get("/api/v1/pert.svg", async (req, res) => {
   const dot = pert.generateDot();
 
   // Write DOT to file
-  fs.writeFileSync("./pert.dot", dot);
+  fs.writeFileSync("./out/pert.dot", dot);
 
   // Generate SVG from DOT
-  await toFile(dot, "./pert.svg", { format: "svg" });
+  await toFile(dot, "./out/pert.svg", { format: "svg" });
 
   // Send SVG
-  res.sendFile("./pert.svg", { root: __dirname });
+  res.sendFile("./out/pert.svg", { root: __dirname });
 });
 
 app.listen(port, host, () => {
