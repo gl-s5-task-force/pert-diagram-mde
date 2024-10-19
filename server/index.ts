@@ -178,6 +178,11 @@ app.get("/api/v1/pert.svg", async (req, res) => {
   // Generate DOT string
   const dot = pert.generateDot();
 
+  // Create out directory
+  if (!fs.existsSync("./out")) {
+    fs.mkdirSync("./out");
+  }
+
   // Write DOT to file
   fs.writeFileSync("./out/pert.dot", dot);
 
