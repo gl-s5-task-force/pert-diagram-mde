@@ -19,6 +19,7 @@ const Table: React.FC = () => {
     predecessors: [],
   });
   const [showNewTaskForm, setShowNewTaskForm] = useState(false);
+  const [pert, setPert] = useState<string | null>(null); // svg pert diagram
 
   // Add a new task
   const addTask = () => {
@@ -55,9 +56,8 @@ const Table: React.FC = () => {
   // Submit the tasks to the backend and log them to the console
   const submitTasks = async () => {
     try {
-      console.log("Tasks to submit:", tasks); // Logs the tasks before sending them
-      const response = await axios.post("http://localhost:3000/api/v1/", tasks);
-      console.log("Response from server:", response.data);
+      const response = await axios.post("http://localhost:3000/api/v1/pert.svg", tasks);
+      setPert(response.data); 
     } catch (error) {
       console.error("Error submitting tasks:", error);
     }
@@ -233,6 +233,13 @@ const Table: React.FC = () => {
           Submit Tasks
         </button>
       </div>
+
+      {pert && (
+        <div className="mt-8">
+          <h2 className="text-2xl font-bold mb-6 text-gray-700">PERT Diagram</h2>
+          <div dangerouslySetInnerHTML={{ __html: pert }} />
+        </div>
+      )}
     </div>
   );
 };

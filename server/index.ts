@@ -43,27 +43,46 @@ function createPert(data: any): Pert {
   return pert;
 }
 
+// Create an Express app
 const app = express();
 
+// Parse JSON bodies
+app.use(express.json());
+
+// Enable CORS
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "OPTIONS, GET, POST, PUT, PATCH, DELETE"
+  );
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  next();
+});
+
+// Route to test the server
 app.get("/api/v1", (req, res) => {
   res.send("Hello, World!");
 });
 
-// generate SVG from DOT
-app.get("/api/v1/pert.svg", async (req, res) => {
-  // Create PERT model
+// Route to test the PERT model
+app.get("/api/v1/test/pert.svg", async (req, res) => {
   const pert = createPert(tasks);
-
-  // Generate DOT string
   const dot = pert.generateDot();
-
-  // Generate SVG from DOT
   const stream = await toStream(dot, { format: "svg" });
-
-  // Send SVG to client
   stream.pipe(res);
 });
 
+// Route to create a PERT diagram
+app.post("/api/v1/pert.svg", async (req, res) => {
+  const data = req.body;
+  const pert = createPert(data);
+  const dot = pert.generateDot();
+  const stream = await toStream(dot, { format: "svg" });
+  stream.pipe(res);
+});
+
+// Start the server
 app.listen(port, host, () => {
   console.log(`Server is running at http://${host}:${port}`);
 });
