@@ -44,10 +44,10 @@ class Pert {
     + generateDot(): string
 }
 
-' Node --> Edge
+Node -right- Edge
 Node --* Graph
 Edge --* Graph
 Pert <|-up- Graph
-Pert --> Task
+Pert --* Task
 
 @enduml
