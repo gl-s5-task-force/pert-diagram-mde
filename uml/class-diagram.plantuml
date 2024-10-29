@@ -1,0 +1,53 @@
+@startuml CombinedDiagram
+
+class Node {
+    - id: string
+    - attributes: Map<string, any>
+    + constructor(id: string)
+}
+
+class Edge {
+    - source: Node
+    - target: Node
+    - attributes: Map<string, any>
+    + constructor(source: Node, target: Node)
+}
+
+class Graph {
+    - nodes: Node[]
+    - edges: Edge[]
+    + constructor()
+    + addNode(node: Node)
+    + addEdge(edge: Edge)
+}
+
+class Task {
+    - name: string
+    - duration: number
+    - earliestStart: number
+    - earliestEnd: number
+    - latestStart: number
+    - latestEnd: number
+    - resource: string
+    - predecessors: Task[]
+    - successors: Task[]
+    + constructor(id: string, name: string, duration: number, resource: string)
+    + addPredecessor(task: Task)
+    + addSuccessor(task: Task)
+}
+
+class Pert {
+    - tasks: Task[]
+    + constructor(tasks: Task[])
+    + calculateEarliestTimes(): void
+    + calculateLatestTimes(): void
+    + generateDot(): string
+}
+
+' Node --> Edge
+Node --* Graph
+Edge --* Graph
+Pert <|-up- Graph
+Pert --> Task
+
+@enduml

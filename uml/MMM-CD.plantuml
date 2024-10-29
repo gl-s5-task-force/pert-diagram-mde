@@ -1,0 +1,28 @@
+@startuml Metametamodel
+
+class Node {
+    - id: string
+    - attributes: Map<string, any>
+    + constructor(id: string)
+}
+
+class Edge {
+    - source: Node
+    - target: Node
+    - attributes: Map<string, any>
+    + constructor(source: Node, target: Node)
+}
+
+class Graph {
+    - nodes: Node[]
+    - edges: Edge[]
+    + constructor()
+    + addNode(node: Node)
+    + addEdge(edge: Edge)
+}
+
+Node --> Edge
+Node --> Graph
+Edge --> Graph
+
+@enduml
