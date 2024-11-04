@@ -1,0 +1,29 @@
+@startuml Metamodel
+
+class Task {
+    - name: string
+    - duration: number
+    - earliestStart: number
+    - earliestEnd: number
+    - latestStart: number
+    - latestEnd: number
+    - resource: string
+    - predecessors: Task[]
+    - successors: Task[]
+    + constructor(id: string, name: string, duration: number, resource: string)
+    + addPredecessor(task: Task)
+    + addSuccessor(task: Task)
+}
+
+class Pert {
+    - tasks: Task[]
+    + constructor(tasks: Task[])
+    + calculateEarliestTimes(): void
+    + calculateLatestTimes(): void
+    + generateDot(): string
+}
+
+
+Pert --> Task
+
+@enduml
