@@ -4,37 +4,56 @@ import { Task } from "./Task";
 class Pert extends Graph {
   tasks: Task[];
 
-  constructor(
-    tasks: Task[],
-  ) {
+  constructor(tasks: Task[]) {
     super();
     this.tasks = tasks;
   }
 
-  // Calculate earliest start and end times
+  // Calculate earliest start (recursive)
+  calculateEarliestStart(task: Task): number {
+    if (task.predecessors.length === 0) {
+      return 0;
+    }
+    let earliestStart = 0;
+    task.predecessors.forEach((predecessor: Task) => {
+      const start =
+        this.calculateEarliestStart(predecessor) + predecessor.duration;
+      if (start > earliestStart) {
+        earliestStart = start;
+      }
+    });
+    return earliestStart;
+  }
+
+  // Calculate earliest times
   calculateEarliestTimes(): void {
     this.tasks.forEach((task: Task) => {
-      if (task.predecessors.length === 0) {
-        task.earliestStart = 0;
-        task.earliestEnd = task.duration;
-      } else {
-        task.earliestStart = 0; // TODO: calculate earliest start time
-        task.earliestEnd = task.earliestStart + task.duration;
-      }
+      task.earliestStart = this.calculateEarliestStart(task);
+      task.earliestEnd = task.earliestStart + task.duration;
     });
   }
 
-  // Calculate latest start and end times
-  calculateLatestTimes(): void {
-    const lastTask = this.tasks[this.tasks.length - 1];
-    lastTask.latestEnd = lastTask.earliestEnd;
-    lastTask.latestStart = lastTask.latestEnd - lastTask.duration;
-
-    for (let i = this.tasks.length - 2; i >= 0; i--) {
-      const task = this.tasks[i];
-      task.latestEnd = task.earliestEnd; // TODO: calculate latest end time
-      task.latestStart = task.latestEnd - task.duration;
+  // Calculate latest times (recursive)
+  calculateLatestStart(task: Task): number {
+    if (task.successors.length === 0) {
+      return task.earliestStart;
     }
+    let latestStart = 999999;
+    task.successors.forEach((successor: Task) => {
+      const start = this.calculateLatestStart(successor) - successor.duration;
+      if (start < latestStart) {
+        latestStart = start;
+      }
+    });
+    return latestStart;
+  }
+
+  // Calculate latest times
+  calculateLatestTimes(): void {
+    this.tasks.forEach((task: Task) => {
+      task.latestEnd = this.calculateLatestStart(task);
+      task.latestStart = task.latestEnd - task.duration;
+    });
   }
 
   // Generate DOT string
