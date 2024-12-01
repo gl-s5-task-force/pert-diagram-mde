@@ -4,8 +4,8 @@ import { Task } from "./classes/metamodel/Task";
 import { Pert } from "./classes/metamodel/Pert";
 import { tasks } from "./data/tasks";
 
-const port = 3000;
-const host = "localhost";
+const PORT = 8080;
+const HOST = '0.0.0.0';
 
 function createPert(data: any): Pert {
   // Initialize tasks
@@ -61,6 +61,11 @@ app.use((req, res, next) => {
 });
 
 // Route to test the server
+app.get('/', (req, res) => {
+  res.send('Hello, Docker!');
+});
+
+// Route to test the server
 app.get("/api/v1", (req, res) => {
   res.send("Hello, World!");
 });
@@ -83,6 +88,6 @@ app.post("/api/v1/pert.svg", async (req, res) => {
 });
 
 // Start the server
-app.listen(port, host, () => {
-  console.log(`Server is running at http://${host}:${port}`);
+app.listen(PORT, HOST, () => {
+  console.log(`Server is running at http://${HOST}:${PORT}`);
 });
