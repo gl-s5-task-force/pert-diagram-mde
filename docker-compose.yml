@@ -1,0 +1,17 @@
+version: "3.9"
+
+services:
+  express-server:
+    build:
+      context: ./server  # The path to the server folder
+      dockerfile: Dockerfile  # The Dockerfile is located inside the server folder
+    container_name: express-server  # The name of the container
+    ports:
+      - "8080:8080"  # Map port 8080 on the host to port 8080 in the container
+    volumes:
+      - ./server:/app  # Mount the server folder to the /app directory in the container
+      - /app/node_modules  # Prevent the node_modules folder from being mounted
+    environment:
+      - NODE_ENV=development  # Set the NODE_ENV environment variable to development
+
+# to run: docker-compose up --build
