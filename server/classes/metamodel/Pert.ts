@@ -60,7 +60,7 @@ class Pert extends Graph {
   generateDot(): string {
     let dot = "digraph PertDiagram {\n";
     this.tasks.forEach((task: Task) => {
-      dot += `  "${task.id}" [shape=rect, style=filled, fillcolor=lightblue, label=<<table border="0" cellborder="1" cellspacing="0"><tr><td>${task.id} (${task.duration})</td><td>${task.earliestStart}, ${task.earliestEnd}</td></tr></table>>];\n`;
+      dot += `  "${task.id}" [shape=rect, style=white, fillcolor=gray, label=<<table border="0" cellborder="1" cellspacing="0"><tr><td>${task.id} (${task.duration})</td><td>${task.earliestStart}, ${task.earliestEnd}</td></tr></table>>];\n`;
 
       if (task.successors) {
         task.successors.forEach((successor: Task) => {
