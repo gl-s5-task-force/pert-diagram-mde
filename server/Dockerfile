@@ -1,5 +1,5 @@
 # Use the official Node.js image as the base
-FROM node:20
+FROM node:20-alpine
 
 # Install graphviz
 RUN apt-get update && apt-get install -y graphviz
@@ -20,4 +20,4 @@ COPY . /app
 EXPOSE 8080
 
 # Start the application
-CMD ["npm", "start"]
+CMD ["npm", "run", "start"]
