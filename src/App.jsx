@@ -4,6 +4,7 @@ import Table from "./components/Table";
 import Navbar from "./components/Navbar";
 import Title from "./components/Title";
 import Hero from "./components/Hero";
+import Footer from "./components/Footer";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -14,6 +15,7 @@ function App() {
       <Title />
       <Hero />
       <Table />
+      <Footer />
     </>
   );
 }

@@ -5,7 +5,7 @@ import { Pert } from "./classes/metamodel/Pert";
 import { tasks } from "./data/tasks";
 
 const PORT = 8080;
-const HOST = '0.0.0.0';
+const HOST = "0.0.0.0";
 
 function createPert(data: any): Pert {
   // Initialize tasks
@@ -61,8 +61,8 @@ app.use((req, res, next) => {
 });
 
 // Route to test the server
-app.get('/', (req, res) => {
-  res.send('Hello, Docker!');
+app.get("/", (req, res) => {
+  res.send("Hello, Docker!");
 });
 
 // Route to test the server
@@ -81,10 +81,27 @@ app.get("/api/v1/test/pert.svg", async (req, res) => {
 // Route to create a PERT diagram
 app.post("/api/v1/pert.svg", async (req, res) => {
   const data = req.body;
-  const pert = createPert(data);
-  const dot = pert.generateDot();
-  const stream = await toStream(dot, { format: "svg" });
-  stream.pipe(res);
+  if (data != null) {
+    try {
+      // Create PERT diagram
+      const pert = createPert(data);
+      const dot = pert.generateDot();
+
+      // Convert DOT to SVG stream
+      const stream = await toStream(dot, { format: "svg" });
+      // Set the appropriate content-type for SVG
+      res.setHeader("Content-Type", "image/svg+xml");
+
+      // Pipe the stream to the response
+      stream.pipe(res);
+    } catch (error) {
+      // Handle errors gracefully
+      res.status(500).send({ error: "Internal Server Error: Could not generate PERT diagram." });
+    }
+  } else {
+    // Handle missing data
+    res.status(400).send({ error: "Bad Request: No data provided." });
+  }
 });
 
 // Start the server

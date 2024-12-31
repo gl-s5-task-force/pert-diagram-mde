@@ -1,0 +1,26 @@
+resource,id,name,duration,predecessors
+G,G1,Kickoff Meeting 1,1,
+G,G2,Kickoff Meeting 2,1,G1
+G,G3,Kickoff Meeting 3,2,G2
+G,G4,Analyse 1,6,G3
+G,G5,Recrutement Equipe Dev. 1,1,G4;H2
+G,G6,Conception 1,5,G5
+G,G7,Prototypage 1,4,G6
+G,G8,Validation du prototype 1,2,G7
+G,G9,Codage 1,20,G8
+G,G10,Validation 1 selon les normes generales,2,G9;H6
+G,G11,Redaction du PV1 de validation,1,G10
+H,H1,Conception 2,5,G2
+H,H2,Recrutement Equipe Dev. 2,1,H1
+H,H3,Benchmark 2,15,H2
+H,H4,Codage 2,20,H3
+H,H5,Test 2,7,H4
+H,H6,Definition des normes generales de validation des lots,6,H5
+H,H7,Validation 2 selon les normes generales,4,H6
+H,H8,Redaction du PV2 de validation,2,H7
+C,C1,Conception 3,5,G3
+C,C2,Recrutement Equipe Dev. 3,2,C1;G5
+C,C3,Benchmark 3,2,C2
+C,C4,Codage 3,15,C3
+C,C5,Validation 3 selon les normes generales,2,C4;H6
+C,C6,Redaction du PV3 de validation,1,C5

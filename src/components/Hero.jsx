@@ -8,9 +8,9 @@ function Hero() {
         Effortlessly generate PERT diagrams to streamline your project planning
         and execution. Simplify complexity and stay ahead with a single click.
       </p>
-      <p className="call">
+      <div className="call">
         <p>Generate PERT now</p> <FaArrowDown className="arrow" />
-      </p>
+      </div>
     </div>
   );
 }

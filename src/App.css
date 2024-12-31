@@ -8,22 +8,26 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem;
+  padding: 1rem 4rem;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
-.navbar img {
-  width: 25rem;
-  padding: 1rem;
+
+/* .navbar img {
+  width: 20rem;
+} */
+.navbar .logo {
+  font-size: 2.5rem;
+  font-weight: bold;
 }
+
 .navbar ul {
   display: flex;
   list-style: none;
-  margin-right: 10rem;
 }
 .navbar ul li {
-  margin-right: 5rem;
-  font-size: 2.5rem;
-  font-weight: bold;
+  margin-left: 4rem;
+  font-size: 1.4rem;
+  font-weight: 600;
   cursor: pointer;
 }
 
@@ -67,6 +71,8 @@
 .table-wrapper {
   margin: 0 auto;
   width: 75%;
+  max-height: 300px;
+  overflow-y: auto;
 }
 
 .table {
@@ -81,6 +87,9 @@
 .table thead th {
   padding: 10px;
   border-radius: 0.5rem;
+}
+.table tbody {
+  overflow-y: auto;
 }
 .table input {
   padding: 0.5rem;
@@ -125,4 +134,47 @@
   display: none;
 }
 
-/*# sourceMappingURL=App.css.map */
+.pert {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.pert .title {
+  font-size: 2.4rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 4rem;
+  background-color: #f9f9f9;
+  margin-top: 5rem;
+}
+
+.footer p {
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.footer ul {
+  display: flex;
+  list-style: none;
+}
+
+.footer ul li {
+  margin-right: 3rem;
+  font-size: 1.25rem;
+  color: #555;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.footer ul li:hover {
+  color: #000;
+}
