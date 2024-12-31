@@ -61,7 +61,24 @@ In this section, both functional and non-functional requirements are outlined to
 <details>
 <summary>Click to view the Class Diagram</summary>
 
-_To be generated and included from PlantText diagrams._
+<div align=center>
+<img src="out/uml/MMM-CD/Metametamodel.svg">
+Meta-metamodel
+</div>
+<br>
+
+<div align=center>
+<img src="out/uml/MM-CD/Metamodel.svg">
+Metamodel
+</div>
+<br>
+
+<div align=center>
+<img src="out/uml/class-diagram/CombinedDiagram.svg">
+Meta-metamodel & Metamodel
+</div>
+<br>
+
 
 </details>
 
@@ -77,22 +94,36 @@ _To be generated and included from PlantText diagrams._
 ## How to Run the App
 
 1. **Clone the Repository**:  
-   Clone the project repository to your local machine using the following commands:
+   Clone the project repository to your local machine using the following command:
 
-   - `git clone <repository-url>`
-   - `cd <repository-directory>`
+   ```bash
+   git clone https://github.com/gl-s5-task-force/pert-diagram-mde.git
+   ```
 
 2. **Install Dependencies**:  
-   Install all necessary dependencies for the project by running `npm install`.
+   Install all necessary dependencies for the project by running:
+
+   ```bash
+   # Front
+   npm install
+
+   # Back
+   cd server
+   npm install
+   cd ..
+   ```
 
 3. **Set Up Graphviz**:  
    Ensure Graphviz is installed on your machine, as it is required for generating PERT diagrams. You can follow the installation instructions at Graphviz's official site: https://graphviz.org/download/
 
-4. **Start the Development Server**:  
-   Start the application in development mode by running `npm run dev`.
+4. **Start the Application**:  
+   Start the application in development mode by running 
+   ```bash 
+   $ ./start
+   ```
 
 5. **Access the Application**:  
-   Open a web browser and navigate to `http://localhost:3000` to access the application.
+   Open a web browser and navigate to `http://localhost:5173` to access the application.
 
 6. **Generate the PERT Diagram**:
    - Enter tasks and their dependencies in the input form provided on the homepage.
