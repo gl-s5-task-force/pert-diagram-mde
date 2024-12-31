@@ -1,42 +1,128 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
+  height: 100vh;
+  background-color: #ffffff;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding: 2rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+.navbar img {
+  width: 25rem;
+  padding: 1rem;
+}
+.navbar ul {
+  display: flex;
+  list-style: none;
+  margin-right: 10rem;
+}
+.navbar ul li {
+  margin-right: 5rem;
+  font-size: 2.5rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.title {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: bold;
+  margin: 5rem 0 5rem;
+}
+.title h1 {
+  margin-bottom: 2.5rem;
+}
+
+.hero {
+  width: 80rem;
+  margin: 0 auto;
+  font-size: 2rem;
   text-align: center;
 }
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+.hero h4 {
+  margin-bottom: 2.5rem;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+.hero .sub {
+  margin-bottom: 2rem;
 }
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.hero .call {
+  color: white;
+  background-color: black;
+  border-radius: 0.75rem;
+  padding: 1rem 2rem;
+  display: flex;
+  margin: 0 auto;
+  align-items: center;
+  width: fit-content;
+  margin-bottom: 5rem;
 }
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.hero .call p {
+  margin-right: 1rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.table-wrapper {
+  margin: 0 auto;
+  width: 75%;
 }
 
-.card {
-  padding: 2em;
+.table {
+  width: 100%;
+  margin-top: 20px;
+  text-align: center;
+}
+.table thead {
+  background-color: rgb(36, 35, 35);
+  color: white;
+}
+.table thead th {
+  padding: 10px;
+  border-radius: 0.5rem;
+}
+.table input {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: none;
+  margin-bottom: 10px;
+  width: 75%;
+  background-color: #f0f0f0;
+}
+.table td {
+  padding: 10px 0;
+  border-bottom: 1px solid rgb(36, 35, 35);
+}
+.table button {
+  background-color: #ffffff;
+  border: none;
+  color: rgb(36, 24, 24);
+  font-weight: bold;
+  font-size: 1.5rem;
+  cursor: pointer;
 }
 
-.read-the-docs {
-  color: #888;
+.button-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 20px;
 }
+.button-wrapper button {
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  background-color: rgb(36, 35, 35);
+  color: white;
+  font-weight: bold;
+  font-size: 1.5rem;
+  border: none;
+  cursor: pointer;
+}
+.button-wrapper input {
+  display: none;
+}
+
+/*# sourceMappingURL=App.css.map */

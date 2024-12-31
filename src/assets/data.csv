@@ -1,0 +1,6 @@
+ressource,id,name,duration,predecessors
+Design,T1,Wireframe,4,
+Development,T2,Backend API,7,T1
+Development,T3,Frontend UI,5,T1
+Integration,T4,Integration Testing,6,T2;T3
+Deployment,T5,Deployment,3,T4
