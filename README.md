@@ -63,19 +63,19 @@ In this section, both functional and non-functional requirements are outlined to
 
 <div align=center>
 <img src="out/uml/MMM-CD/Metametamodel.svg">
-Meta-metamodel
+<p>Meta-metamodel</p>
 </div>
 <br>
 
 <div align=center>
 <img src="out/uml/MM-CD/Metamodel.svg">
-Metamodel
+<p>Metamodel</p>
 </div>
 <br>
 
 <div align=center>
 <img src="out/uml/class-diagram/CombinedDiagram.svg">
-Meta-metamodel & Metamodel
+<p>Meta-metamodel & Metamodel</p>
 </div>
 <br>
 
