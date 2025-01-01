@@ -1,5 +1,7 @@
 # PERT Diagram Generator Web App
 
+<img src="results/Screenshot_1.png">
+
 ## Introduction
 
 This project is a web application that generates a PERT (Program Evaluation and Review Technique) diagram from user-defined tasks, leveraging Model-Driven Engineering (MDE) principles. The primary objective is to simplify project management by automating the visualization of task dependencies, durations, and sequences. The PERT diagram helps in identifying critical paths, optimizing task schedules, and improving time management for complex projects.
@@ -61,19 +63,19 @@ In this section, both functional and non-functional requirements are outlined to
 <details>
 <summary>Click to view the Class Diagram</summary>
 
-<div align=center>
+<div align="center">
 <img src="out/uml/MMM-CD/Metametamodel.svg">
 <p>Meta-metamodel</p>
 </div>
 <br>
 
-<div align=center>
+<div align="center">
 <img src="out/uml/MM-CD/Metamodel.svg">
 <p>Metamodel</p>
 </div>
 <br>
 
-<div align=center>
+<div align="center">
 <img src="out/uml/class-diagram/CombinedDiagram.svg">
 <p>Meta-metamodel & Metamodel</p>
 </div>
@@ -127,5 +129,18 @@ In this section, both functional and non-functional requirements are outlined to
 
 6. **Generate the PERT Diagram**:
    - Enter tasks and their dependencies in the input form provided on the homepage.
-   - Click “Generate Diagram” to view the PERT diagram based on the provided input.
-   - You can export the diagram as an image or PDF if needed.
+   - Click "Submit" to view the PERT diagram based on the provided input.
+
+7. **Results**:
+
+<div align="center">
+   <img src="results/Screenshot_2.png">
+</div>
+
+<div align="center">
+   <img src="results/Screenshot_3.png">
+</div>
+
+<div align="center">
+   <img src="results/Screenshot_4.png">
+</div>
