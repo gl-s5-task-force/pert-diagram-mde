@@ -1,3 +1,9 @@
+console.time('process');
+const { performance } = require('perf_hooks'); // For high-resolution timing
+
+// Start the timer
+const start = performance.now();
+
 import express from "express";
 import { toStream } from "@ts-graphviz/adapter";
 import { Task } from "./classes/metamodel/Task";
@@ -6,6 +12,7 @@ import { tasks } from "./data/tasks";
 
 const PORT = 8080;
 const HOST = "0.0.0.0";
+
 
 function createPert(data: any): Pert {
   // Initialize tasks
@@ -106,5 +113,12 @@ app.post("/api/v1/pert.svg", async (req, res) => {
 
 // Start the server
 app.listen(PORT, HOST, () => {
-  console.log(`Server is running at http://${HOST}:${PORT}`);
+  const elapsed = performance.now() - start; // Calculate the elapsed time
+    
+  console.log(
+    `\n  \x1b[1m\x1b[35mPERT\x1b[0m \x1b[35mDiagram Server\x1b[0m ready in \x1b[1m${Math.trunc(elapsed)}\x1b[0m ms `
+  );
+  console.log(
+    `\n  \x1b[35m➜\x1b[0m  \x1b[1mLocal\x1b[0m:   \x1b[36mhttp://localhost:${PORT}/api/v1/\x1b[0m`
+  );
 });
