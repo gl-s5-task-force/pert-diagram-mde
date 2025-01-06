@@ -45,9 +45,11 @@ class Pert {
 }
 
 Node -right- Edge
+' gotta add source and targetlationship between node and edge ??
 Node --* Graph
 Edge --* Graph
-Pert <|-up- Graph
-Pert --* Task
+Pert -up-|> Graph
+Pert *-- Task
+Task --> Task
 
 @enduml
