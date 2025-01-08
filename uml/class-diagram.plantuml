@@ -44,12 +44,12 @@ class Pert {
     + generateDot(): string
 }
 
-Node -right- Edge
+Node "1"-right-" 0..*" Edge : source <
+Node "1"-right-" 0..*" Edge : target <
 ' gotta add source and targetlationship between node and edge ??
-Node --* Graph
-Edge --* Graph
+Node "1..*"--*  Graph : contains <
+Edge "0..*"--*  Graph : contains <
 Pert -up-|> Graph
-Pert *-- Task
-Task --> Task
-
+Pert *-- "1..*" Task : contains >
+Task "0..*"-->"0..*" Task : composed of
 @enduml
