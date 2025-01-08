@@ -60,17 +60,13 @@ In this section, both functional and non-functional requirements are outlined to
 
 ## Class Diagrams
 
-<details>
-<summary>Click to view the Class Diagram</summary>
+
 
 <div align="center">
 <img src="out/uml/class-diagram/CombinedDiagram.svg">
 <p>Meta-metamodel & Metamodel</p>
 </div>
 <br>
-
-
-</details>
 
 ## Development Tools
 
